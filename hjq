@@ -1,0 +1,41 @@
+<script type="text/javascript">
+            define("",["$"],function($){
+                (function(){
+            var formid = "#smallform_0";
+            var hideformid = "hidesmallform_0";
+            
+            var dCharset = document.charset;
+            function sub_search_form(){
+                if ($(formid).attr("formcharset") == "utf-8"){
+                    //document.charset="utf-8";
+                }else {
+                    //document.charset="gbk";
+                }
+            
+                //setTimeout(function(){document.charset=dCharset;}, 100);
+            
+                return true;
+            }
+            
+            function init(){
+                if($(formid)){
+                    $(formid + " input:nth-child(3)").click(function(){
+                        if (sub_search_form()){
+                            $(formid).submit();
+                        }
+                        return false;
+                    });
+                    $(formid).submit(function(){
+                        return sub_search_form();
+                    });
+                }else{
+                    setTimeout(init,100);
+                    return;
+                }
+            }
+            
+            init();
+            })();
+                
+            });
+        </script>
